@@ -12,11 +12,9 @@ dotenv.config();
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 
-
 dbConnect()
 app.listen(port,() => {
     console.log("App is listening on port " +port);
 });
 
-
-app.use("/api",userRoute);
+app.use("/api/user",userRoute);
