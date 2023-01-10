@@ -28,6 +28,15 @@ class ContactController{
             res.status(404).json({error:error.message});
         }
     }
+
+    static async getContact(req,res){
+        try {
+            const contact = await Contact.findById(req.params.id);
+            res.status(200).json(contact);
+        } catch (error) {
+            res.status(404).json({error:error.message});
+        }
+    }
 }
 
 export default ContactController;
