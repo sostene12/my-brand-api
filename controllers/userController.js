@@ -1,4 +1,5 @@
 import User from "../models/User";
+import CryptoJS from "crypto-js";
 
 class UserController {
   static async getAllUsers(req, res) {
@@ -22,7 +23,9 @@ class UserController {
 
   static async createUser(req, res) {
     try {
-      const user = new User(req.body);
+      const {username,password,email} = req.body;
+      const hashedPassword = CryptoJS.AES.encrypt(password,process.env.SECRET_KEY).toString();
+      const user = new User({username:username,password:hashedPassword,email:email});
       await user.save();
       res.status(201).json(user);
     } catch (error) {
@@ -33,8 +36,11 @@ class UserController {
   static async updateUser(req, res) {
     try {
       const id = req.params.id;
-      const updatedUser = await User.findByIdAndUpdate(id,{$set:req.body},{new:true});
-      res.status(200).json(updatedUser);
+      if(req.body){
+        req.body.password = CryptoJS.AES.encrypt(req.body.password,process.env.SECRET_KEY).toString();
+        const updatedUser = await User.findByIdAndUpdate(id,{$set:req.body},{new:true});
+        res.status(200).json(updatedUser);
+      }
     } catch (error) {
       res.status(401).json({ error: error.message });
     }
