@@ -26,6 +26,15 @@ class BlogController{
             res.status(404).json({error:error.message});
         }
     }
+
+    static async deleteBlog(req,res){
+        try {
+          await Blog.findByIdAndDelete(req.params.id);
+          res.status(200).json({message:"the blog deleted"});  
+        } catch (error) {
+            res.status(404).json({error:error.message})
+        }
+    }
 }
 
 export default BlogController;
