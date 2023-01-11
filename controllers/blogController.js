@@ -35,6 +35,15 @@ class BlogController{
             res.status(404).json({error:error.message})
         }
     }
+
+    static async getAllBlogs(req, res) {
+        try {
+          const blogs = await Blog.find();
+          res.status(200).json(blogs);
+        } catch (error) {
+          res.status(404).json(error.message);
+        }
+      }
 }
 
 export default BlogController;
