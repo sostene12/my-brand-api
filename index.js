@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import dbConnect from "./database/db";
 import userRoute from "./routes/userRoute";
 import contactRoute from "./routes/contactRoute";
+import blogRoute from "./routes/blogRoute";
 
 const app = express();
 app.use(cors());
@@ -20,3 +21,4 @@ app.listen(port,() => {
 
 app.use("/api/user",userRoute);
 app.use("/api/contact",contactRoute);
+app.use("/api/blog",blogRoute);
