@@ -30,9 +30,9 @@ class BlogController{
     static async deleteBlog(req,res){
         try {
           await Blog.findByIdAndDelete(req.params.id);
-          res.status(200).json({message:"the blog deleted"});  
+          res.status(200).json({status:"success",data:null});  
         } catch (error) {
-            res.status(404).json({error:error.message})
+            res.status(500).json({error:error.message})
         }
     }
 }
