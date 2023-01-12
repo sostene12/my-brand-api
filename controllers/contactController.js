@@ -32,9 +32,9 @@ class ContactController{
     static async getContact(req,res){
         try {
             const contact = await Contact.findById(req.params.id);
-            res.status(200).json(contact);
+            res.status(200).json({status:"success",data:contact});
         } catch (error) {
-            res.status(404).json({error:error.message});
+            res.status(500).json({error:error.message});
         }
     }
 }
