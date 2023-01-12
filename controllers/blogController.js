@@ -12,9 +12,9 @@ class BlogController{
                 comments:req.body.comments
             });
             await blog.save();
-            res.status(201).json(blog);
+            res.status(201).json({status:"success",data:blog});
         } catch (error) {
-            res.status(401).json({error:error.message});
+            res.status(500).json({error:error.message});
         }
     }
 }
