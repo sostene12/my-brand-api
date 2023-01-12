@@ -26,7 +26,7 @@ class UserController {
       await user.save();
       res.status(201).json({status:"success",data:user});
     } catch (error) {
-      res.status(401).json({status:"fail", error: error.message });
+      res.status(500).json({status:"fail", error: error.message });
     }
   }
 
@@ -36,7 +36,7 @@ class UserController {
       const updatedUser = await User.findByIdAndUpdate(id,{$set:req.body},{new:true});
       res.status(200).json({status:"success",data:updatedUser});
     } catch (error) {
-      res.status(401).json({status:"fail", error: error.message });
+      res.status(500).json({status:"fail", error: error.message });
     }
   }
 
@@ -45,7 +45,7 @@ class UserController {
       await User.findByIdAndDelete(req.params.id);
       res.status(200).json({status:"success",data:null});
     } catch (error) {
-      res.status(401).json({status:"fail", error: error.message });
+      res.status(500).json({status:"fail", error: error.message });
     }
   }
 }
