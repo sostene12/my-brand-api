@@ -23,7 +23,7 @@ class ContactController{
     static async getAllContact(req,res){
         try {
             const contacts = await Contact.find();
-            res.status(200).json(contacts);
+            res.status(200).json({status:"success",data:contacts});
         } catch (error) {
             res.status(404).json({error:error.message});
         }
