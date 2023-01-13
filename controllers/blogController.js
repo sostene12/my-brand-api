@@ -65,6 +65,16 @@ class BlogController{
         }
     }
 
+    static async comment(req,res){
+      try {
+        await Blog.findByIdAndUpdate(req.params.id,{$push : {comments:req.body}});
+        const blog = await Blog.findById(req.params.id);
+        res.json(blog)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
 
 }
 
