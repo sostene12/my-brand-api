@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import dbConnect from "./database/db";
+import userRoute from "./routes/userRoute";
+import contactRoute from "./routes/contactRoute";
 
 const app = express();
 app.use(cors());
@@ -14,3 +16,6 @@ dbConnect()
 app.listen(port,() => {
     console.log("App is listening on port " +port);
 });
+
+app.use("/api/user",userRoute);
+app.use("/api/contact",contactRoute);

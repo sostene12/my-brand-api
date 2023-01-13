@@ -1,4 +1,5 @@
 import User from "../models/User";
+import CryptoJS from "crypto-js";
 
 class UserController {
   static async getAllUsers(req, res) {
@@ -22,7 +23,9 @@ class UserController {
 
   static async createUser(req, res) {
     try {
-      const user = new User(req.body);
+      const {username,password,email} = req.body;
+      const hashedPassword = CryptoJS.AES.encrypt(password,process.env.SECRET_KEY).toString();
+      const user = new User({username:username,password:hashedPassword,email:email});
       await user.save();
       res.status(201).json({status:"success",data:user});
     } catch (error) {
