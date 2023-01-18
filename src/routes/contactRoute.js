@@ -1,11 +1,11 @@
 import express from "express";
 import ContactController from "../controllers/contactController";
+import { verifyToken } from "../middlewares/authenticate";
 
 const contactRoute = express.Router();
 
 contactRoute.post("/create",ContactController.createContact);
-contactRoute.delete("/delete/:id",ContactController.deleteContact);
-contactRoute.get("/all",ContactController.getAllContact);
-contactRoute.get("/:id",ContactController.getContact);
-
+contactRoute.get("/all",verifyToken,ContactController.getAllContact);
+contactRoute.get("/:id",verifyToken,ContactController.getContact);
+contactRoute.delete("/delete/:id",verifyToken,ContactController.deleteContact);
 export default contactRoute;

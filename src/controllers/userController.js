@@ -8,7 +8,7 @@ class UserController {
       const users = await User.find();
       res.status(200).json({status:"success",data:users});
     } catch (error) {
-      res.status(500).json(error.message);
+      res.status(400).json({status:"error",error:error.message});
     }
   }
 

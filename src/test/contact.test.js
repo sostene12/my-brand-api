@@ -1,37 +1,115 @@
-// import dotenv from "dotenv";
-// import chai from "chai";
-// import chaiHttp from "chai-http";
+import dotenv from 'dotenv';
+import chai from 'chai';
+import chaiHttp from 'chai-http';
 
-// import Contact from "../models/blog";
-// import server from "../index";
+import Contact from '../models/contact';
+import server from '../index';
 
-// dotenv.config()
+dotenv.config();
 
-// chai.should();
-// chai.use(chaiHttp);
+chai.should();
+chai.use(chaiHttp);
 
-// const blog = {
-//     title:'flower',
-//     description:'importace of flowers',
-//     image:'https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000',
-//     comments:[]
-// }
+const contact = {
+  fullName: 'Kaleb',
+  email: 'kaleb@gmail.com',
+  message: 'this is an important announcement',
+};
 
-// describe('Blogs',() =>{
-//     beforeEach((done) =>{
-//         Blog.deleteMany({},error => {
-//             done();
-//         })
-//     })
-// });
+let user = {
+  username: 'sostene',
+  email: 'sostene@gmail.com',
+  password: 'sostene123',
+};
 
-// describe('GET /api/blog/all retrieve all blogs',() =>{
-//     it('it should GET all the blogs',(done) =>{
-//         chai.request(server).get('/api/blog/all').end((error,res) =>{
-//             chai.expect(res).to.have.status(200);
-//             chai.expect(res.body).to.be.a('array');
-//             chai.expect(res.body.length).to.be.eql(0);
-//             done();
-//         })
-//     })
-// });
+let loginUser = {
+  email: 'sostene@gmail.com',
+  password: 'sostene123',
+};
+
+let id;
+let token;
+
+describe('Contacts', () => {
+  beforeEach((done) => {
+    Contact.deleteMany({}, (error) => {
+      done();
+    });
+  });
+});
+
+describe('Contacts Operations', () => {
+
+  it('it should create a user', (done) => {
+    chai
+      .request(server)
+      .post('/api/user/create')
+      .send(user)
+      .end((error, res) => {
+        chai.expect(res).to.have.status(201);
+        chai.expect(res.body.data).to.be.a('object');
+        done();
+      });
+  });
+
+  it('it should log user in', (done) => {
+    chai
+      .request(server)
+      .post('/api/user/login')
+      .send(loginUser)
+      .end((error, res) => {
+        token = res.body.token;
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body.data).to.be.a('object');
+        done();
+      });
+  });
+
+  it('it should GET all contacts', (done) => {
+    chai
+      .request(server)
+      .get('/api/contact/all')
+      .set('token', `Bearer ${token}`)
+      .end((error, res) => {
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body.data).to.be.a('array');
+        done();
+      });
+  });
+
+it('it should create contact ', (done) => {
+    chai
+      .request(server)
+      .post('/api/contact/create')
+      .send(contact)
+      .end((error, res) => {
+        chai.expect(res).to.have.status(201);
+        chai.expect(res.body).to.be.a('object');
+        id = res.body.data._id;
+        done();
+      });
+  });
+
+  it('it should GET single contact by id', (done) => {
+    chai
+      .request(server)
+      .get(`/api/contact/${id}`)
+      .set('token', `Bearer ${token}`)
+      .end((error, res) => {
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body.data).to.be.a('object');
+        done();
+      });
+  });
+
+  it('it should DELETE single contact by id', (done) => {
+    chai
+      .request(server)
+      .delete(`/api/contact/delete/${id}`)
+      .set('token', `Bearer ${token}`)
+      .end((error, res) => {
+        chai.expect(res).to.have.status(200);
+        done();
+      });
+  });
+});

@@ -5,27 +5,27 @@ class ContactController{
         try {
             const contact = new Contact(req.body);
             await contact.save();
-            res.status(201).json(contact);
+            res.status(201).json({status:"success",data:contact});
         } catch (error) {
-            res.status(401).json({error:error.message});
+            res.status(400).json({status:"error", error:error.message});
         }
     }
 
     static async deleteContact(req,res){
         try {
             await Contact.findByIdAndDelete(req.params.id);
-            res.status(200).json({message:"contact deleted"});
+            res.status(200).json({status:"success",message:"contact deleted"});
         } catch (error) {
-            res.status(404).json({error:error.message});
+            res.status(401).json({status:"error", error:error.message});
         }
     }
 
     static async getAllContact(req,res){
         try {
             const contacts = await Contact.find();
-            res.status(200).json(contacts);
+            res.status(200).json({status:"success",data:contacts});
         } catch (error) {
-            res.status(404).json({error:error.message});
+            res.status(400).json({status:"error",error:error.message});
         }
     }
 
