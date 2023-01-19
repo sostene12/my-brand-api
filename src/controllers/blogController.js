@@ -5,18 +5,18 @@ class BlogController{
     static async getAllBlogs(req, res) {
         try {
           const blogs = await Blog.find();
-          res.status(200).json(blogs);
+          res.status(200).json({status:"success",data:blogs});
         } catch (error) {
-          res.status(404).json(error.message);
+          res.status(404).json({status:"error",error:error.message});
         }
       }
 
     static async getSingleBlog(req,res){
         try {
             const blog = await Blog.findById(req.params.id);
-            res.status(200).json(blog);
+            res.status(200).json({status:"success",data:blog});
         } catch (error) {
-            res.status(404).json({error:error.message});
+            res.status(401).json({status:"error",error:error.message});
         }
     }
     static async createBlog(req,res){
@@ -59,9 +59,9 @@ class BlogController{
     static async deleteBlog(req,res){
         try {
           await Blog.findByIdAndDelete(req.params.id);
-          res.status(200).json({message:"the blog deleted"});  
+          res.status(200).json({status:"success",data:null,message:"the blog deleted"});  
         } catch (error) {
-            res.status(404).json({error:error.message})
+            res.status(401).json({status:"error",error:error.message})
         }
     }
 
@@ -69,9 +69,9 @@ class BlogController{
       try {
         await Blog.findByIdAndUpdate(req.params.id,{$push : {comments:req.body}});
         const blog = await Blog.findById(req.params.id);
-        res.json(blog)
+        res.status(200).json({status:"success",data:blog})
       } catch (error) {
-        console.log(error)
+          res.status(401).json({status:"error",error:error.message});
       }
     }
 

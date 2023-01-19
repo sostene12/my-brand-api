@@ -38,7 +38,7 @@ describe('users', () => {
   });
 });
 
-describe('CRUD users endpoints', () => {
+describe('users endpoints', () => {
   it('it should create a user', (done) => {
     chai
       .request(server)
