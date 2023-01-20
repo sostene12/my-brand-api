@@ -30,7 +30,7 @@ class UserController {
       await user.save();
       res.status(201).json({status:"success",data:user});
     } catch (error) {
-      res.status(500).json({status:"fail", error: error.message });
+      res.status(500).json({status:"success", error: error.message });
     }
   }
 
@@ -40,14 +40,14 @@ class UserController {
       if(!user) return res.status(401).json({status:"fail",error:"Invalid credentials" });
       const match = await bcrypt.compare(req.body.password,user.password);
       if(!match){
-        res.status(401).json({status:"fail",error:"Invalid password" })
+        res.status(401).json({status:"error",error:"Invalid password" })
         return;
       }
       const accessToken = sign({id:user._id})
       res.status(200).json({status:"success",data:user,token:accessToken});
 
     } catch (error) {
-      res.status(500).json({status:"fail", error: error.message });
+      res.status(500).json({status:"error", error: error.message });
     }
   }
 
@@ -60,7 +60,7 @@ class UserController {
       const updatedUser = await User.findByIdAndUpdate(req.params.id,{$set:user},{new:true});
       res.status(200).json({status:"success",data:updatedUser});
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({status:"error", error: error.message });
     }
   }
 
@@ -69,7 +69,7 @@ class UserController {
       await User.findByIdAndDelete(req.params.id);
       res.status(200).json({status:"success",data:null,message:'User deleted!'});
     } catch (error) {
-      res.status(500).json({status:"fail", error: error.message });
+      res.status(500).json({status:"error", error: error.message });
     }
   }
 }

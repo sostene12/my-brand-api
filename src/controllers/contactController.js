@@ -34,7 +34,7 @@ class ContactController{
             const contact = await Contact.findById(req.params.id);
             res.status(200).json({status:"success",data:contact});
         } catch (error) {
-            res.status(500).json({error:error.message});
+            res.status(500).json({status:"error",error:error.message});
         }
     }
 }
