@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./src/index.js -d build",
-    "start": "babel-node src/index.js",
+    "build": "rm -rf && babel ./src/index.js -d build",
+    "start": "npm run build && babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js",
     "test": "nyc mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js"
   },
