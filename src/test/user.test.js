@@ -14,6 +14,7 @@ const user = {
   username: 'kaleb',
   email: 'kalebcurry@gmail.com',
   password: '12345',
+  role:"admin"
 };
 
 let loginUser = {

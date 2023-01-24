@@ -1,6 +1,9 @@
 const listAllUsers = {
         tags:['User'],
         description:"List all users",
+        security:{
+            bearerAuth:[]
+        },
         responses:{
             200:{
                 description:"OK",
@@ -62,9 +65,54 @@ const createUser = {
     }
 }
 
+const login = {
+    tags:['User'],
+    description:"Login",
+    requestBody:{
+        content:{
+            "application/json":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        email:{
+                            type:"string",
+                            description:"Your email",
+                            example:"kaleb@gmail.com"
+                        },
+                        password:{
+                            type:"string",
+                            description:"your password",
+                            example:"12345"
+                        },
+                    }
+                }
+            }
+        }
+    },
+    responses:{
+        201:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    type:"object",
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                }
+            }
+        }
+    }
+}
+
 const getUserById = {
     tags:['User'],
     description:"Get the user by id",
+    security: [
+        {
+          JWT: [],
+        },
+      ],
     responses:{
         200:{
             description:"OK",
@@ -87,6 +135,9 @@ export const userRouteDocs = {
     },
     "/api/user/create":{
         post:createUser,
+    },
+    "/api/user/login":{
+        post:login,
     },
     "/api/user/id":{
         get:getUserById,

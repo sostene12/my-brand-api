@@ -15,6 +15,9 @@ class UserController {
   static async getSingleUser(req, res) {
     try {
       const user = await User.findById(req.params.id);
+      if(!user){
+        return res.status(404).json({status:"fail",message:"The user not found"});
+      }
       const {password,...others} = user._doc;
       res.status(200).json({status:"success",data:others});
     } catch (error) {
@@ -43,7 +46,7 @@ class UserController {
         res.status(401).json({status:"error",error:"Invalid password" })
         return;
       }
-      const accessToken = sign({id:user._id})
+      const accessToken = sign({id:user._id,role:user.role})
       res.status(200).json({status:"success",data:user,token:accessToken});
 
     } catch (error) {
@@ -53,7 +56,6 @@ class UserController {
 
   static async updateUser(req, res) {
     try {
-      const id = req.params.id;
       const user = req.body;
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(user.password,salt);
@@ -66,6 +68,10 @@ class UserController {
 
   static async deleteUser(req, res) {
     try {
+      const user = await User.findById(req.params.id);
+      if(!user){
+        return res.status(404).json({status:"fail",message:"The user not found"});
+      }
       await User.findByIdAndDelete(req.params.id);
       res.status(200).json({status:"success",data:null,message:'User deleted!'});
     } catch (error) {

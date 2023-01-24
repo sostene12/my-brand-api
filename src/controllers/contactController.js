@@ -13,6 +13,8 @@ class ContactController{
 
     static async deleteContact(req,res){
         try {
+            const contact = await Contact.findById(req.params.id);
+            if(!contact) return res.status(404).json({status:"fail",message:"The contact is not found"});
             await Contact.findByIdAndDelete(req.params.id);
             res.status(200).json({status:"success",message:"contact deleted"});
         } catch (error) {
@@ -32,6 +34,7 @@ class ContactController{
     static async getContact(req,res){
         try {
             const contact = await Contact.findById(req.params.id);
+            if(!contact) return res.status(404).json({status:"fail",message:"The contact is not found"});
             res.status(200).json({status:"success",data:contact});
         } catch (error) {
             res.status(500).json({status:"error",error:error.message});
