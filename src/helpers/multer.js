@@ -1,7 +1,7 @@
 import multer from "multer";
 import path from "path";
 
-const upload = multer({
+export const upload = multer({
     storage:multer.diskStorage({}),
     filename:(req,file,cb) =>{
         cb(null,file.originalname)
@@ -15,5 +15,3 @@ const upload = multer({
         cb(null,true);
     }
 });
-
-export default upload;
