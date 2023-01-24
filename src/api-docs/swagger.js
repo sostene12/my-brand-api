@@ -27,19 +27,12 @@ const options = {
       { name: 'Contact', description: 'Contact Routes' },
       { name: 'Blog', description: 'Blog Routes' },
     ],
-    security: [
-      {
-        bearerAuth: [],
-      },
-    ],
     components: {
       securitySchemes: {
-        bearerAuth: {
+        token: {
           type: 'http',
           scheme: 'bearer',
           bearerFormat: 'JWT',
-          name: 'bearerAuth',
-          in: 'header'
         },
       },
     },

@@ -4,6 +4,11 @@ const listAllUsers = {
         security:{
             bearerAuth:[]
         },
+        security: [
+            {
+              token: [],
+            },
+          ],
         responses:{
             200:{
                 description:"OK",
@@ -108,9 +113,18 @@ const login = {
 const getUserById = {
     tags:['User'],
     description:"Get the user by id",
+    parameters:[
+        {
+            name:"id",
+            in:"path",
+            description:"id of user",
+            type:"string",
+            example:"63caaf3527b29e1d399896da"
+        }
+    ],
     security: [
         {
-          JWT: [],
+          token: [],
         },
       ],
     responses:{
@@ -139,7 +153,7 @@ export const userRouteDocs = {
     "/api/user/login":{
         post:login,
     },
-    "/api/user/id":{
+    "/api/user/{id}":{
         get:getUserById,
     }
 };
