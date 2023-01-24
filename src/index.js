@@ -9,8 +9,8 @@ import dbConnect from "./database/db";
 import userRoute from "./routes/userRoute";
 import contactRoute from "./routes/contactRoute";
 import blogRoute from "./routes/blogRoute";
-import authRoute from "./routes/authRoute";
-import { passportAuth } from "./controllers/passportController"
+// import authRoute from "./routes/authRoute";
+// import { passportAuth } from "./controllers/passportController"
 
 dotenv.config();
 const app = express();
@@ -25,7 +25,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-passportAuth(passport);
+// passportAuth(passport);
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 
@@ -37,7 +37,7 @@ app.listen(port,() => {
 app.use("/api/user",userRoute);
 app.use("/api/contact",contactRoute);
 app.use("/api/blog",blogRoute);
-app.use("/auth",authRoute)
+// app.use("/auth",authRoute)
 
 
 export default app;
