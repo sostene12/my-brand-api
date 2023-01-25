@@ -30,9 +30,11 @@ const options = {
     components: {
       securitySchemes: {
         token: {
-          type: 'http',
+          type: 'apiKey',
           scheme: 'bearer',
           bearerFormat: 'JWT',
+          name:"token",
+          in:"header"
         },
       },
     },

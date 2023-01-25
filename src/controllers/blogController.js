@@ -38,11 +38,12 @@ class BlogController{
     static async updateBlog(req, res) {
         try {
           const blog = await Blog.findById(req.params.id);
+          if(!blog) return res.status(404).json({status:"fail",error:"The blog is not found"})
           await cloudinary.uploader.destroy(blog.image);
           const result = await cloudinary.uploader.upload(req.file.path);
           const updatedBlog = await Blog.findByIdAndUpdate(req.params.id,{$set:{
-            title:req.body.title,
-            description:req.body.description,
+            title:req.body.title ? req.body.title : blog.title,
+            description:req.body.description ? req.body.description : blog.description,
             image:result.secure_url,
             comments:req.body.comments
           }},{new:true});

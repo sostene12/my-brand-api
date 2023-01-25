@@ -45,11 +45,200 @@ const getBlogById = {
     }
 }
 
+const createBlog = {
+    tags:['Blog'],
+    description:"Create a Blog post",
+    requestBody:{
+        content:{
+            "multipart/form-data":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        title:{
+                            type:"string",
+                        },
+                        description:{
+                            type:"string",
+                        },
+                        image:{
+                            type:"file",
+                            description:"the image of the blog post"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    responses:{
+        201:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    type:"object",
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                }
+            }
+        }
+    }
+}
+
+const deleteBlogPost = {
+    tags:['Blog'],
+    description:"Delete the blog post by id",
+    security: [
+        {
+          token: [],
+        },
+      ],
+    parameters:[
+        {
+            name:"id",
+            in:"path",
+            description:"id of the blog",
+            type:"string"
+        }
+    ],
+
+    responses:{
+        200:{
+            description:"OK",
+            content:{
+                 "application/json":{
+                    type:'object',
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                 }
+            }
+        }
+    }
+}
+
+const updateBlogPost = {
+    tags:['Blog'],
+    description:"Update a Blog post",
+    security: [
+        {
+          token: [],
+        },
+      ],
+    parameters:[
+        {
+            name:"id",
+            in:"path",
+            description:"id of the blog",
+            type:"string"
+        }
+    ],
+    requestBody:{
+        content:{
+            "multipart/form-data":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        title:{
+                            type:"string",
+                        },
+                        description:{
+                            type:"string",
+                        },
+                        image:{
+                            type:"file",
+                            description:"the image of the blog post"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    responses:{
+        201:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    type:"object",
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                }
+            }
+        }
+    }
+}
+
+const commentOnBlog = {
+    tags:['Blog'],
+    description:"commenton a blog post",
+    parameters:[
+        {
+            name:"id",
+            in:"path",
+            description:"id of the blog",
+            type:"string"
+        }
+    ],
+    security: [
+        {
+          token: [],
+        },
+      ],
+    requestBody:{
+        content:{
+            "application/json":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        name:{
+                            type:"string",
+                            example:"Kaleb"
+                        },
+                        comment:{
+                            type:"string",
+                            example:"this blog is so helpful"
+                        },
+                    }
+                }
+            }
+        }
+    },
+    responses:{
+        201:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    type:"object",
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                }
+            }
+        }
+    }
+}
+
 export const blogRouteDocs = {
     "/api/blog/all":{
         get:listAllBlogs
     },
     "/api/blog/{id}":{
         get:getBlogById
+    },
+    "/api/blog/create":{
+        post:createBlog
+    },
+    "/api/blog/delete/{id}":{
+        delete:deleteBlogPost
+    },
+    "/api/blog/update/{id}":{
+        put:updateBlogPost
+    },
+    "/api/blog/comment/{id}":{
+        put:commentOnBlog
     }
 }
