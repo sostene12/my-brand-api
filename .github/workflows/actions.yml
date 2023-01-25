@@ -1,34 +1,18 @@
-name: CI/CD
-run-name: ${{ github.actor }} is testing out GitHub Actions 
-on:
-  push: 
-    branches: [develop]
-  pull_request: 
-    branches: [develop]
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
 jobs:
-  start: 
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-
-#   strategy: 
-#     matrix: 
-#       os: [ubuntu-latest]
-#       node-version: [16.x]
-#   env: 
-#     MONGODB_URL: ${{secrets.MONGODB_URL}}
-#     CLOUDINARY_NAME: ${{secrets.CLOUDINARY_NAME}}
-#     CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}
-#     CLOUDINARY_API_SECRET: ${{secrets.CLOUDINARY_API_SECRET}}
-#     JWT_SECRETKEY: ${{secrets.JWT_SECRETKEY}}
-#     GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
-#     GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
-#     PORT: ${{secrets.PORT}}
-  # steps: 
-  #   - uses: actions/checkout@v1
-  #   - name: 'Use node.js ${{matrix.node-version}}'
-  #     uses: actions/setup-node@v1
-  #     with: 
-  #     node-version: ${{matrix.node-version}}
-  #   -run: npm install
-  #   -run: npm run test
-  #   -run: npm run coverage
-  #   -run: npm run start
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
