@@ -20,6 +20,7 @@ let user = {
   username: 'sostene',
   email: 'sostene@gmail.com',
   password: 'sostene123',
+  role:"admin"
 };
 
 let loginUser = {
@@ -65,6 +66,19 @@ describe('Contacts Operations', () => {
       });
   });
 
+  it('it should create contact ', (done) => {
+    chai
+      .request(server)
+      .post('/api/contact/create')
+      .send(contact)
+      .end((error, res) => {
+        chai.expect(res).to.have.status(201);
+        chai.expect(res.body).to.be.a('object');
+        id = res.body.data._id;
+        done();
+      });
+  });
+
   it('it should GET all contacts', (done) => {
     chai
       .request(server)
@@ -77,18 +91,7 @@ describe('Contacts Operations', () => {
       });
   });
 
-it('it should create contact ', (done) => {
-    chai
-      .request(server)
-      .post('/api/contact/create')
-      .send(contact)
-      .end((error, res) => {
-        chai.expect(res).to.have.status(201);
-        chai.expect(res.body).to.be.a('object');
-        id = res.body.data._id;
-        done();
-      });
-  });
+
 
   it('it should GET single contact by id', (done) => {
     chai

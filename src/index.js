@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import passport from "passport";
-import session from "express-session"
+import session from "express-session";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
 
 import dbConnect from "./database/db";
@@ -21,6 +23,7 @@ app.use(session({
     saveUninitialized: false,
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -31,6 +34,8 @@ app.listen(port,() => {
     console.log("App is listening on port " +port);
 });
 
+
+swaggerDocs(app);
 app.use("/api/user",userRoute);
 app.use("/api/contact",contactRoute);
 app.use("/api/blog",blogRoute);

@@ -17,6 +17,7 @@ let user = {
   username: 'sostene',
   email: 'sostene@gmail.com',
   password: 'sostene123',
+  role:"admin"
 };
 
 let loginUser = {
