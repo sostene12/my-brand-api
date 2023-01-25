@@ -7,21 +7,21 @@ on:
     branches: [develop]
 jobs:
   start: 
-    runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
 
-  strategy: 
-    matrix: 
-      os: [ubuntu-latest]
-      node-version: [16.x]
-  env: 
-    MONGODB_URL: ${{secrets.MONGODB_URL}}
-    CLOUDINARY_NAME: ${{secrets.CLOUDINARY_NAME}}
-    CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}
-    CLOUDINARY_API_SECRET: ${{secrets.CLOUDINARY_API_SECRET}}
-    JWT_SECRETKEY: ${{secrets.JWT_SECRETKEY}}
-    GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
-    GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
-    PORT: ${{secrets.PORT}}
+#   strategy: 
+#     matrix: 
+#       os: [ubuntu-latest]
+#       node-version: [16.x]
+#   env: 
+#     MONGODB_URL: ${{secrets.MONGODB_URL}}
+#     CLOUDINARY_NAME: ${{secrets.CLOUDINARY_NAME}}
+#     CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}
+#     CLOUDINARY_API_SECRET: ${{secrets.CLOUDINARY_API_SECRET}}
+#     JWT_SECRETKEY: ${{secrets.JWT_SECRETKEY}}
+#     GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+#     GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+#     PORT: ${{secrets.PORT}}
   # steps: 
   #   - uses: actions/checkout@v1
   #   - name: 'Use node.js ${{matrix.node-version}}'
