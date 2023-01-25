@@ -16,7 +16,7 @@ jobs:
     env: 
       MONGODB_URL: ${{secrets.MONGODB_URL}}
       CLOUDINARY_NAME: ${{secrets.CLOUDINARY_NAME}}
-      CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}
+      CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}
       CLOUDINARY_API_SECRET: ${{secrets.CLOUDINARY_API_SECRET}}
       JWT_SECRETKEY: ${{secrets.JWT_SECRETKEY}}
       GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
