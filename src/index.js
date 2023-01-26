@@ -3,14 +3,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 import passport from "passport";
 import session from "express-session";
-import swaggerJSDoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
-
 
 import dbConnect from "./database/db";
 import userRoute from "./routes/userRoute";
 import contactRoute from "./routes/contactRoute";
 import blogRoute from "./routes/blogRoute";
+import swaggerDocs from "./api-docs/swagger"
 
 dotenv.config();
 const app = express();
