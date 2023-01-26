@@ -18,7 +18,7 @@ const options = {
         description: 'Development server',
       },
       {
-        url: 'http://production',
+        url: 'https://my-brand-api-fr2w.onrender.com',
         description: 'Production server',
       },
     ],
