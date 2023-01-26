@@ -1,2 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/sostene12/my-brand-api/badge.svg?branch=develop)](https://coveralls.io/repos/github/sostene12/my-brand-api/badge.svg?branch=develop)]
-##My-brand-api
+
+![github workflow](https://github.com/sostene12/my-brand-api/.github/workflows/actions.yml/badge.svg)
+
+
+#My-brand-api
