@@ -34,5 +34,3 @@ jobs:
       - run: npm test
       - run: npm run coverage
       - run: npm run start
-      
-      
