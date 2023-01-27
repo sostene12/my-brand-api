@@ -1,0 +1,35 @@
+name: CI/CD
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: 
+  push:
+    branches:
+      - develop
+  pull_request: 
+    branches:
+      - develop
+    
+jobs:
+  build:
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [16.x]
+    env: 
+      MONGODB_URL: ${{secrets.MONGODB_URL}}
+      CLOUDINARY_NAME: ${{secrets.CLOUDINARY_NAME}}
+      CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}
+      CLOUDINARY_API_SECRET: ${{secrets.CLOUDINARY_API_SECRET}}
+      JWT_SECRETKEY: ${{secrets.JWT_SECRETKEY}}
+      GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+      GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+      PORT: ${{secrets.PORT}}
+    steps:
+      - uses: actions/checkout@v1
+      - name: 'Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}'
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm test
+      - run: npm run coverage
