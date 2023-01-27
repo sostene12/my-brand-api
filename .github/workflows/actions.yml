@@ -33,9 +33,3 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run coverage
-      - name: coveralls
-        uses: coverallsapp/github-action@master
-        with: 
-          github-token: ${{secrets.COVERALLS_REPO_TOKEN}}
-          
-          
