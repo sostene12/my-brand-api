@@ -1,6 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/sostene12/my-brand-api/badge.svg?branch=develop)](https://coveralls.io/github/sostene12/my-brand-api?branch=develop)
-
-# Capstone-backend ![check-code-coverage](https://img.shields.io/badge/code--coverage-56.91%25-red)
+### Capstone-project -api   ![check-code-coverage](https://img.shields.io/badge/code--coverage-72.24%25-yellow)
 
 ###My-brand-api
 
@@ -14,20 +12,22 @@ it contain both APIs endpoint that will allow CRUD operations
 - Package manage: NPM
 - Environment: Nodejs
 - Database: mongobd
+
 # Requirement & installation steps
 
-- you nee the following to be able to run the application
+- you need the following to be able to run the application
   Node as javascript runtime environment
-  Postmon for testing API endpoints
+  Postman for testing API endpoints
   VS code for editing and running the app
-  MongoDB for Database
+  MongoDB for Database and
+  browser
 
 # installation
 
 - from your computer, open terminal
 - Clone project
-  Run git clone https://github.com/oliviertech212/Capstone-backend.git to clone the repository
+  Run git clone https://github.com/sostene12/my-brand-api.git to clone the repository
 
 # Author
 
-oliviertech
+sostene
