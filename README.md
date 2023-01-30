@@ -1,7 +1,33 @@
-[![Coverage Status](https://coveralls.io/repos/github/sostene12/my-brand-api/badge.svg?branch=develop)](https://coveralls.io/repos/github/sostene12/my-brand-api/badge.svg?branch=develop)]
+[![Coverage Status](https://coveralls.io/repos/github/sostene12/my-brand-api/badge.svg?branch=develop)](https://coveralls.io/github/sostene12/my-brand-api?branch=develop)
 
-![github workflow](https://github.com/sostene12/my-brand-api/.github/workflows/actions.yml/badge.svg)
+# Capstone-backend ![check-code-coverage](https://img.shields.io/badge/code--coverage-56.91%25-red)
 
+###My-brand-api
 
+# Description
 
-#My-brand-api
+this is backend for my capstone project, this will allow visitors to reach me and
+it contain both APIs endpoint that will allow CRUD operations
+
+# Technologies
+
+- Package manage: NPM
+- Environment: Nodejs
+- Database: mongobd
+# Requirement & installation steps
+
+- you nee the following to be able to run the application
+  Node as javascript runtime environment
+  Postmon for testing API endpoints
+  VS code for editing and running the app
+  MongoDB for Database
+
+# installation
+
+- from your computer, open terminal
+- Clone project
+  Run git clone https://github.com/oliviertech212/Capstone-backend.git to clone the repository
+
+# Author
+
+oliviertech
