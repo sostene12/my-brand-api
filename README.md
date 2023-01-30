@@ -1,6 +1,6 @@
 # My-brand-api
 
-![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
+![example event parameter](https://github.com/sostene12/my-brand-api/actions/workflows/actions.yml/badge.svg?event=push)
 
 ### Capstone-project -api   ![check-code-coverage](https://img.shields.io/badge/code--coverage-72.24%25-yellow)
 
