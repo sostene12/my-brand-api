@@ -1,6 +1,8 @@
 # My-brand-api
 
-![check-build-pass](https://github.com/sostene12/docs/my-brand-api/.github/workflows/actions.yml/badge.svg?event=push)
+![build](https://github.com/sostene12/my-brand-api/actions/workflows/actions.yml/badge.svg?event=push)
+
+
 ### Capstone-project -api   ![check-code-coverage](https://img.shields.io/badge/code--coverage-72.24%25-yellow)
 
 
