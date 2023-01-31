@@ -1,30 +1,34 @@
 # My-brand-api
 
 ![build](https://github.com/sostene12/my-brand-api/actions/workflows/actions.yml/badge.svg?event=push)
+![check-code-coverage](https://img.shields.io/badge/code--coverage-72.24%25-yellow)
 
 
-### Capstone-project -api   ![check-code-coverage](https://img.shields.io/badge/code--coverage-72.24%25-yellow)
+## Capstone-project -api   
 
 
 # Description
 
 this is backend for my capstone project, this will allow visitors to reach me and
-it contain both APIs endpoint that will allow CRUD operations
+it contain both APIs endpoint that will allow visitors to perform different activities it also have
+the documentation of the endpoints.
 
 # Technologies
 
-- Package manage: NPM
-- Environment: Nodejs
-- Database: mongobd
+- Language: Javascript
+- Package manager: NPM
+- Library: Nodejs
+- Framework:Express
+- Database: MongoDb
 
 # Requirement & installation steps
 
-- you need the following to be able to run the application
-  Node as javascript runtime environment
-  Postman for testing API endpoints
-  VS code for editing and running the app
-  MongoDB for Database and
-  browser
+- you need the following to be able to run the application 
+  - Node : javascript runtime environment
+  - Postman : testing API endpoints
+  - VS code : for editing and running the app
+  - MongoDB : for Database(optional)
+  - browser
 
 # installation
 
@@ -34,4 +38,4 @@ it contain both APIs endpoint that will allow CRUD operations
 
 # Author
 
-sostene
+sostene : Fullstack developer
