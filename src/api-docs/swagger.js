@@ -18,9 +18,13 @@ const options = {
         description: 'Development server',
       },
       {
-        url: 'https://my-brand-api-fr2w.onrender.com',
-        description: 'Production server',
+        url:'https://faithful-onesies-dog.cyclic.app',
+        description:"Cyclic production"
       },
+      {
+        url: 'https://my-brand-api-fr2w.onrender.com',
+        description: 'Render Production',
+      }
     ],
     tags: [
       { name: 'User', description: 'User Routes' },
