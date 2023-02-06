@@ -46,7 +46,7 @@ class UserController {
         res.status(401).json({status:"error",error:"Invalid password" })
         return;
       }
-      const accessToken = sign({id:user._id,role:user.role})
+      const accessToken = sign({id:user._id,role:user.role,name:user.username})
       res.status(200).json({status:"success",data:user,token:accessToken});
 
     } catch (error) {
