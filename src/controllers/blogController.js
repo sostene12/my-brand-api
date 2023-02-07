@@ -69,11 +69,10 @@ class BlogController{
     static async comment(req,res){
       try {
         await Blog.findByIdAndUpdate(req.params.id,{$push : {comments: {
-          name:req.user.name,...req.body
+          name:req.user.name,comment:req.body.comment
         }}});
         const blog = await Blog.findById(req.params.id);
         const {comments} = blog;
-        console.log(comments)
         res.status(200).json({status:"success",data:comments})
       } catch (error) {
           res.status(401).json({status:"error",error:error.message});

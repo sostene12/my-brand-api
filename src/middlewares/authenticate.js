@@ -11,7 +11,6 @@ export const verifyToken = (req,res,next) =>{
         const token = authHeader.split(' ')[1];
         if(!token) return res.status(401).json({status:"error",error:"You are not authenticated"});
         const verified = verify(token);
-        console.log(verified);
         req.user = verified;
         next();
     } catch (error) {
