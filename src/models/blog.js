@@ -13,7 +13,8 @@ const blogSchema = mongoose.Schema({
   comments: [
     {
       name: String,
-      comment:String
+      comment:String,
+      date:String
     },
   ],
 });

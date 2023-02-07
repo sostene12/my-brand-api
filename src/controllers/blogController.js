@@ -68,7 +68,13 @@ class BlogController{
 
     static async comment(req,res){
       try {
-        await Blog.findByIdAndUpdate(req.params.id,{$push : {comments:req.body}});
+        const commentDate = new Date(Date.now());
+        const date = commentDate.toDateString();
+        await Blog.findByIdAndUpdate(req.params.id,{$push : {comments:{
+          name:req.body.name,
+          comment:req.body.comment,
+          date:date
+      }}});
         const blog = await Blog.findById(req.params.id);
         const {comments} = blog;
         res.status(200).json({status:"success",data:comments})
