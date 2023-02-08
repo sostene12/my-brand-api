@@ -83,6 +83,18 @@ class BlogController{
       }
     }
 
+    static async like(req,res){
+      try {
+        const {likes} = await Blog.findById(req.params.id);
+        const newLike = likes + 1;
+       const likedBlog =  await Blog.findByIdAndUpdate(req.params.id,{likes:newLike},{new:true});
+
+       return res.status(200).json({status:"success",data:likes});
+      } catch (error) {
+        return res.status(401).json({status:'error',error:error.message});
+      }
+    }
+
 
 }
 
