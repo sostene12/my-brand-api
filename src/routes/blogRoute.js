@@ -12,5 +12,6 @@ blogRoute.get("/:id",BlogController.getSingleBlog);
 blogRoute.delete("/delete/:id",verifyTokenAndRole,BlogController.deleteBlog);
 blogRoute.put("/update/:id",upload.single('image'),verifyTokenAndRole,BlogController.updateBlog);
 blogRoute.put("/comment/:id",verifyToken,BlogController.comment);
+blogRoute.put("/like/:id",verifyToken,BlogController.like);
 
 export default blogRoute;

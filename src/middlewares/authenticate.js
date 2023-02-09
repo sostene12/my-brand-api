@@ -1,4 +1,6 @@
 import { verify } from "../helpers/jwt";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const verifyToken = (req,res,next) =>{
     try {

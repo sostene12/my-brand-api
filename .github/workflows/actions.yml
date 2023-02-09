@@ -16,6 +16,7 @@ jobs:
         os: [ubuntu-latest]
         node-version: [16.x]
     env: 
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       MONGODB_URL: ${{secrets.MONGODB_URL}}
       CLOUDINARY_NAME: ${{secrets.CLOUDINARY_NAME}}
       CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}

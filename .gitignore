@@ -1,6 +1,7 @@
 .env
 node_modules
 dist
-.nyc_output
 build
 dist
+coverage
+.nyc_output
