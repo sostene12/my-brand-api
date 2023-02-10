@@ -227,6 +227,38 @@ const commentOnBlog = {
     }
 }
 
+const likeBlog = {
+    tags:['Blog'],
+    description:"like a blog post",
+    parameters:[
+        {
+            name:"id",
+            in:"path",
+            description:"id of the blog",
+            type:"string"
+        }
+    ],
+    security: [
+        {
+          token: [],
+        },
+      ],
+    responses:{
+        201:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    type:"object",
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                }
+            }
+        }
+    }
+}
+
 export const blogRouteDocs = {
     "/api/blog/all":{
         get:listAllBlogs
@@ -245,5 +277,8 @@ export const blogRouteDocs = {
     },
     "/api/blog/comment/{id}":{
         put:commentOnBlog
+    },
+    "/api/blog/like/{id}":{
+        put:likeBlog
     }
 }
