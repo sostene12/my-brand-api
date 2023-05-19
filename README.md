@@ -9,17 +9,24 @@
 
 # Description
 
-this is backend for my capstone project, this will allow visitors to reach me and
-it contain both APIs endpoint that will allow visitors to perform different activities it also have
+My-brand-ap is capstone project which is comprised of the features like `signup, login, blogs and emailing`, it will allow visitors of my portifolio to communicate by filling the form of contact and also comment on the blogs that i will be posting on my portifolio. it also have
 the documentation of the endpoints.
+
+#### Users
+  - Guest
+    - can login and signup
+    - can comment on the blog post
+    - can also send an email by filling contact form
+  - Admin
+    - can implement CRUD of the blog posts
+    - can implement CRUD od the users and their roles
+    - can read, reply and deleted the sent contacts or emails
 
 # Technologies
 
-- Language: Javascript
-- Package manager: NPM
-- Library: Nodejs
-- Framework:Express
-- Database: MongoDb
+- NodeJs and Express
+- MongoDb
+- Chai and Mocha for testing
 
 # Requirement & installation steps
 
@@ -30,12 +37,24 @@ the documentation of the endpoints.
   - MongoDB : for Database(optional)
   - browser
 
-# installation
+## Getting Started
+remember ro create env file and add the values from `.env.example` file
+``` bash
+git clone https://github.com/sostene12/my-brand-api.git
+npm install 
+#or
+yarn
 
-- from your computer, open terminal
-- Clone project
-  Run git clone https://github.com/sostene12/my-brand-api.git to clone the repository
+npm run dev
+# or
+yarn dev
+```
+
+## Testing
+```
+npm run test
+```
 
 # Author
 
-sostene : Fullstack developer
+NG Sostene : Fullstack developer
