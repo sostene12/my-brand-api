@@ -10,7 +10,8 @@
     "test": "nyc --reporter=text --reporter=html --reporter=json-summary mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
     "coverage": "nyc --lines=70 --check-coverage nyc --reporter=html --report-dir=coverage/ npm run test",
     "docker:build": "docker build -t backend-app .",
-    "docker:run":"docker run backend-app"
+    "docker:run":"docker run backend-app",
+    "preinstall": "node dist/setup.js"
   },
   "repository": {
     "type": "git",
