@@ -17,15 +17,15 @@ const contact = {
 };
 
 let user = {
-  username: 'sostene',
-  email: 'sostene@gmail.com',
-  password: 'sostene123',
+  username: 'kaleb',
+  email: 'kalebcurry@gmail.com',
+  password: '12345',
   role:"admin"
 };
 
 let loginUser = {
-  email: 'sostene@gmail.com',
-  password: 'sostene123',
+  email: 'kalebcurry@gmail.com',
+  password: '12345',
 };
 
 let id;
