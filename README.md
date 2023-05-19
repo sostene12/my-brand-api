@@ -2,6 +2,7 @@
 
 ![build](https://github.com/sostene12/my-brand-api/actions/workflows/actions.yml/badge.svg?event=push)
 ![check-code-coverage](https://img.shields.io/badge/code--coverage-81.22%25-green)
+[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) 
 
 
 ## Capstone-project -api   
